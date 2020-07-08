@@ -1,0 +1,24 @@
+# Project: WLC Configuration Builder
+#
+# Copyright (c) 2019, World Wide Technology - All rights reserved.
+#
+# This project includes intellectual property developed
+# at World Wide Technology.
+#
+# usage:
+#   Full: ansible-playbook site.yml
+---
+- name: Deploy WLC Configuration
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - name: INCLUDE | Setup tasks
+    import_tasks: includes/00_setup_tasks.yml
+
+  - name: INCLUDE | Create Configuration Snippet
+    import_tasks: includes/01_create_configuration_snippet.yml
+
+  - name: INCLUDE | Cleanup Tasks
+    import_tasks: includes/99_cleanup.yml

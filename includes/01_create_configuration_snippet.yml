@@ -1,0 +1,11 @@
+---
+- name: Build Configuration Snippet
+  template:
+    src: '{{ item }}'
+    dest: '{{ data_directory }}/{{ inventory_hostname }}_{{ item.split(".")[0] }}.cfg'
+  loop: '{{ configuration_templates }}'
+
+- name: Combine base config and configuration snippets
+  assemble:
+    src: "{{ data_directory }}"
+    dest: "{{ data_directory }}/{{ final_configuration_file }}"

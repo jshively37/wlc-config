@@ -1,0 +1,11 @@
+---
+- name: Delete Final Configuration
+  file:
+    path: "{{ data_directory }}/{{ final_configuration_file }}"
+    state: absent
+
+- name: Delete Previous Config Snippets
+  file:
+    path: '{{ data_directory }}/{{ inventory_hostname }}_{{ item.split(".")[0] }}.cfg'
+    state: absent
+  loop: '{{ configuration_templates }}'

@@ -1,0 +1,11 @@
+{% if services is defined -%}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Enable Network Services
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+{% if services.restconf_enabled -%}
+(enable restconfig command)
+{% endif -%}
+{% if services.netconf_enabled -%}
+(enable netconf comman)
+{% endif -%}
+{% endif %}

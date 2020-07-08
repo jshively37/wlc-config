@@ -1,0 +1,6 @@
+---
+- name: Delete Config Snippets
+  file:
+    path: '{{ data_directory }}/{{ inventory_hostname }}_{{ item.split(".")[0] }}.cfg'
+    state: absent
+  loop: '{{ configuration_templates }}'

@@ -1,0 +1,32 @@
+---
+# -- Login ------
+username:
+password:
+
+# -- Services ------
+ssh:
+  ssh_port: 22
+  ssh_enabled: true
+
+scp:
+  scp_port: 22
+  scp_enabled: true
+
+netconf:
+  restconf_port: 830
+  netconf_enabled: true
+
+restconf:
+  restconf_port: 443
+  restconf_enabled: true
+
+http:
+  http_protocol: https
+  http_port: 443
+
+# -- Management ----------
+management_interface:
+  description: MANGEMENT_NETWORK
+  vlan: 888
+  subnet_mask: 255.255.255.0
+  gateway: 192.168.100.1

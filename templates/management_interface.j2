@@ -1,0 +1,15 @@
+{% if management_interface is defined -%}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Network Management VLAN
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+interface vlan {{ management_interface.vlan }}
+  description {{ management_interface.description }}
+  ip address {{ ansible_host }} {{ management_interface.subnet_mask }}
+  no shutdown
+{% endif %}
+{% if management_interface.gateway -%}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Default Gateway
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ip route 0.0.0.0 0.0.0.0 {{ management_interface.gateway }}
+{%endif %}
